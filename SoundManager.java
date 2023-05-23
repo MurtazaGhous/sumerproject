@@ -31,6 +31,7 @@ public class SoundManager {
                 return;
             }
             clip.setFramePosition(0); // Reset to the beginning
+            clips.add(clip); //add clip the the listto use for mute
             try {
                 Thread.sleep(20); // Add a small delay before starting the clip
             } catch (InterruptedException e) {
