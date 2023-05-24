@@ -12,11 +12,18 @@ Press Y to play the game again once one of the player reaches 6
 
 Press M to mute/unmute the audio 
 
+Cheat codes:
+For player 1( paddle on the left) : Keep pressed Q to disable player 2 paddle's collision with the puck
+
+For player 2( paddle on the right) : Keep pressed P to disable player 1 paddle's collsion witht the puck 
+
 Further info:
 
 This is a simple airhockey game made in java. The classes used are as follow:
 
 AirHockey.java : this is the class with the main method. It sets up the arena pannel using the GameArena class and the aihockey table using the Table class. It then initiaties the gamelogic class allowing the paddles and puck to be added and the satrt the game loop
+
+Table.java: Class used to set the airhockey table layout including the goals, the centre line/circle, the table boudries
 
 GameLogic.java: This class handles the game controls, collision and deflection of the puck and paddles, the goal detection and score counter, the audio to be played at certain moments using the SoundManager class and allows the player to play the game again once one of the player reaches the score of 6
 
