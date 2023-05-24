@@ -38,6 +38,10 @@ public class GameLogic {
     private static boolean paddle2Left = false;
     private static boolean paddle2Right = false;
 
+    //Cheat code:
+    private boolean Lcollisionoff = false;
+    private boolean Rcollisionoff = false; 
+
     // sound
     private SoundManager SoundManager = new SoundManager();
 
@@ -139,6 +143,13 @@ public class GameLogic {
                             SoundManager.unmute();
                         }
                         break;
+                    case KeyEvent.VK_P:
+                        Lcollisionoff = true;
+                        break;
+
+                    case KeyEvent.VK_Q:
+                        Rcollisionoff = true;
+                        break;
 
                 }
             }
@@ -172,6 +183,12 @@ public class GameLogic {
                         break;
                     case KeyEvent.VK_Y:
                         gameRestart = false;
+                        break;
+                    case KeyEvent.VK_P:
+                        Lcollisionoff = false;
+                        break;
+                    case KeyEvent.VK_Q:
+                        Rcollisionoff = false;
                         break;
                 }
             }
@@ -222,6 +239,7 @@ public class GameLogic {
             }
 
             // Detect puck collision
+        if(!Lcollisionoff){
             if (puck.collides(paddle1)) {
                 if (!isMuted) {
                     SoundManager.playSound("hit.wav");
@@ -232,7 +250,8 @@ public class GameLogic {
                 changepuckY = puckspeed * Math.sin(angle);
 
             }
-
+        }
+        if (!Rcollisionoff){
             if (puck.collides(paddle2)) {
                 if (!isMuted) {
                     SoundManager.playSound("hit.wav");
@@ -243,6 +262,7 @@ public class GameLogic {
                 changepuckY = puckspeed * Math.sin(angle);
 
             }
+        }
 
             // Detect collision with the table boundaries
             if (puck.getXPosition() - puck.getSize() / 2 <= table.getTableCenterX() - table.getTableWidth() / 2 ||
